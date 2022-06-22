@@ -1,0 +1,28 @@
+# rules to overwrite
+0
+# number of defined interactions
+21
+# type      type2       interaction
+Zn_c        N_c         morse          465.3586852242318 2.00000 2.735
+Zn_s        Zn_s        lennard-jones  0.000001160458857702 1.000000000
+Zn_s        Zn_c        lennard-jones  0.000001160458857702 1.000000000
+Zn_s        N_c         lennard-jones  0.000001160458857702 1.000000000
+Zn_s        N_s         lennard-jones  0.000001160458857702 1.000000000
+Zn_s        C1          lennard-jones  0.000001160458857702 1.000000000
+Zn_s        C2          lennard-jones  0.000001160458857702 1.000000000
+Zn_s        C3          lennard-jones  0.000001160458857702 1.000000000
+Zn_s        H2          lennard-jones  0.000001160458857702 1.000000000
+Zn_s        H1          lennard-jones  0.000001160458857702 1.000000000
+Zn_s        Ow          lennard-jones  0.000001160458857702 1.000000000
+Zn_s        Hw          lennard-jones  0.000001160458857702 1.000000000
+N_s         Zn_c        lennard-jones  0.000001160458857702 1.000000000
+N_s         N_c         lennard-jones  0.000001160458857702 1.000000000
+N_s         C1          lennard-jones  0.000001160458857702 1.000000000
+N_s         C2          lennard-jones  0.000001160458857702 1.000000000
+N_s         C3          lennard-jones  0.000001160458857702 1.000000000
+N_s         H2          lennard-jones  0.000001160458857702 1.000000000
+N_s         H1          lennard-jones  0.000001160458857702 1.000000000
+N_s         Ow          lennard-jones  0.000001160458857702 1.000000000
+N_s         Hw          lennard-jones  0.000001160458857702 1.000000000
+# mixing rules to overwrite
+0

@@ -1,0 +1,131 @@
+Bond Coeffs kcal/mol/A/A
+#
+Zn   He   harmonic       540.0   0.900
+He   He   harmonic       540.0   1.470
+#    
+C3   H3   harmonic       321.77  1.102
+C1   C3   harmonic       225.63  1.498
+C1   N1   harmonic       337.26  1.355
+C4   N1   harmonic       337.26  1.355
+C2   H2   harmonic       369.75  1.088
+C4   H4   harmonic       369.75  1.088
+C2   N1   harmonic       289.65  1.386
+C2   C2   harmonic       402.32  1.377
+# 
+N1   Ne   harmonic       540.0   0.500
+# fake DMF
+Xe   Kr   harmonic       540.0   1.000
+# DMSO
+S1   O2   harmonic       700.000000   1.530000
+S1   C7   harmonic       339.997610   1.790000
+C7   H5   harmonic       339.997610   1.090000
+# water
+O1   H4   harmonic       176.864000 0.9611
+#
+Angle Coeffs kcal/mol/rad/rad
+#
+He   Zn   He   charmm     55.0    109.500      0.0    0.0
+He   He   He   charmm     55.0     60.0        0.0    0.0
+He   He   Zn   charmm     55.0     35.25       0.0    0.0
+#
+C3   C1   N1   charmm     39.07   124.197     30.61   2.522
+H4   C4   N1   charmm     39.07   124.197     20.43   2.160
+C1   N1   C2   charmm     46.33   106.252     111.65  2.193
+C4   N1   C2   charmm     46.33   106.252     111.65  2.193
+N1   C1   N1   charmm     32.34   111.169     107.37  2.236
+N1   C4   N1   charmm     32.34   111.169     107.37  2.236
+N1   C2   C2   charmm     33.58   107.995     99.05   2.235
+N1   C2   H2   charmm     31.58   121.317     20.43   2.160
+C2   C2   H2   charmm     35.0    130.034     14.78   2.236
+C1   C3   H3   charmm     36.31   110.963     19.16   2.153
+H3   C3   H3   charmm     27.18   107.741     18.67   1.779
+#
+Ne   N1   C2   charmm     11.36   126.95      0.0     0.0  
+Ne   N1   C1   charmm     14.43   126.85      0.0     0.0  
+#
+O2   S1   C7   charmm     73.9961 107.0       0.0   0.0
+C7   S1   C7   charmm     61.9980  96.0       0.0   0.0
+S1   C7   H5   charmm     35.0023 109.5       0.0   0.0
+H5   C7   H5   charmm     32.9947 107.8       0.0   0.0
+# water
+H4   O1   H4   charmm     42.184  109.4712    0.0   0.0
+#
+Dihedral Coeffs   kcal/mol
+#
+H2   C2   C2   N1   charmm         3.55    2   180   0.0
+H3   C3   C1   N1   charmm         0.27    2   180   0.0
+C2   N1   C1   C3   charmm         3.64    2   180   0.0
+C2   N1   C4   H4   charmm         3.64    2   180   0.0
+C2   N1   C1   N1   charmm         10.77   2   180   0.0
+C2   N1   C4   N1   charmm         10.77   2   180   0.0
+H2   C2   C2   H2   charmm         0.34    2   180   0.0
+N1   C2   C2   N1   charmm         15.33   2   180   0.0
+C1   N1   C2   H2   charmm         3.65    2   180   0.0
+C4   N1   C2   H2   charmm         3.65    2   180   0.0
+C1   N1   C2   C2   charmm         6.64    2   180   0.0
+C4   N1   C2   C2   charmm         6.64    2   180   0.0
+#
+H2   C2   N1   Ne   charmm         1.056   2   180   0.0
+C2   C2   N1   Ne   charmm         1.416   2   180   0.0
+C2   N1   Ne   N1   charmm         0.021   3   180   0.0
+C3   C1   N1   Ne   charmm         0.227   2   180   0.0
+H4   C4   N1   Ne   charmm         0.227   2   180   0.0
+Ne   N1   C1   N1   charmm         0.614   2   180   0.0
+Ne   N1   C4   N1   charmm         0.614   2   180   0.0
+C1   N1   Ne   N1   charmm         0.026   3   0     0.0
+C4   N1   Ne   N1   charmm         0.026   3   0     0.0
+#
+Zn   He   He   He   charmm         0.000   2   53  0.0
+He   Zn   He   He   charmm         0.000   2  120  0.0
+He   He   He   He   charmm         0.000   2   70  0.0
+Zn   He   He   Zn   charmm         0.000   2   70  0.0
+# DMSO
+H5   C7   S1   O2   charmm        0          2  180 0
+H5   C7   S1   C7   charmm        0          2  180 0
+#
+Improper Coeffs   kcal/mol
+#
+Zn   He   He   He   cvff           0.0     -1   2
+C2   N1   H2   C2   cvff           0.0     -1   2
+C1   C3   N1   N1   cvff           3.5     -1   2
+C3   C1   H3   H3   cvff           0.0     -1   2
+C3   H3   H3   H3   cvff           0.0     -1   2
+C4   H4   N1   N1   cvff           3.5     -1   2
+#
+N1   Ne   C1   C2   cvff           0.056   -1   2
+N1   C2   C1   Ne   cvff           3.5     -1   2
+He   Zn   He   He   cvff           0.0     -1   2
+He   He   He   He   cvff           0.0     -1   2
+# DMSO:
+S1   O2   C7   C7   none
+C7   S1   H5   H5   none
+C7   H5   H5   H5   none
+#
+Pair Coeffs      kcal/mol
+mixing     Lorentz-Berthelot
+#
+C1   C1    lj/cut          0.086042070   3.400
+C2   C2    lj/cut          0.086042070   3.400
+C3   C3    lj/cut          0.086042070   3.400
+C4   C4    lj/cut          0.086042070   3.400
+H2   H2    lj/cut          0.015009560   2.510
+H3   H3    lj/cut          0.015709847   2.471
+H4   H4    lj/cut          0.015359704   2.500
+Zn   Zn    lj/cut          0.012507170   1.960
+N1   N1    lj/cut          0.170100400   3.250
+He   He    lj/cut          0.000000001   1.000
+Ne   Ne    lj/cut          0.000000001   1.000
+Ar   Ar    lj/cut          0.238066      3.41  # Tanaka et al. doi:10.1021/jp500931g
+# fake DMF
+Xe   Xe    lj/cut          0.00910646    2.96  # O OPLS-aa
+Kr   Kr    lj/cut          0.00910646    2.96  # O OPLS-aa
+# DMSO:
+C7   C7    lj/cut          0.086042070   3.400
+O2   O2    lj/cut          0.280000     2.930000
+H5   H5    lj/cut          0.030000     2.500000
+S1   S1    lj/cut          0.395000     3.560000
+# water
+#O4   O4    lj/cut          0.170124     3.000000
+#H1   H1    lj/cut          0.030000      2.420
+##
+End  

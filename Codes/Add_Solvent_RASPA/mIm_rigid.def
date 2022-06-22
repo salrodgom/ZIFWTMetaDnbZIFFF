@@ -1,0 +1,44 @@
+# critical constants: Temperature [T], Pressure [Pa], and Acentric factor [-]
+0.0
+0.0
+0.0
+# Number Of Atoms
+13
+# Number of groups
+1
+# benzene-group
+rigid
+# number of atoms
+13
+# atomic positions
+0  H3   7.220   9.678  10.462
+1  C2  11.066  10.345  11.387
+2  H2  11.826  11.071  11.118
+3  N_c  9.843  10.309  10.748
+4  H3   7.239   8.401  11.675
+5  C2  11.080   9.348  12.333
+6  H2  11.856   9.054  13.032
+7  N_c  9.867   8.694  12.281
+8  C1   9.151   9.296  11.309
+9  C3   7.800   8.850  10.860
+10 H3   7.869   8.143  10.113
+11 N_s  9.758  10.601  10.352
+12 N_s  9.750   8.312  12.581
+# Chiral centers Bond  BondDipoles Bend  UrayBradley InvBend  Torsion Imp. Torsion Bond/Bond Stretch/Bend Bend/Bend Bend/Torsion IntraVDW IntraCoulomb
+               0   13            0    0            0       0        0            0         0            0         0            0        0            0
+# Bond stretch: atom n1-n2, type, parameters
+0  9 RIGID_BOND
+4  9 RIGID_BOND
+10 9 RIGID_BOND
+8  9 RIGID_BOND
+8  7 RIGID_BOND
+8  3 RIGID_BOND
+3  1 RIGID_BOND
+1  2 RIGID_BOND
+1  5 RIGID_BOND
+5  6 RIGID_BOND
+5  7 RIGID_BOND
+11 2 RIGID_BOND
+12 7 RIGID_BOND
+# Number of config moves
+0

@@ -1,0 +1,25 @@
+SimulationType                MC
+NumberOfCycles                1000000
+NumberOfInitializationCycles  1000
+PrintEvery                    10
+
+Forcefield                    local
+ChargeMethod                  Ewald
+EwaldPrecision                1e-8
+Framework                     0
+FrameworkName                 p1_fromPDBFile_topol
+CutOff                        12.0
+ExternalTemperature           300.0
+ExternalPressure              1.0e7
+Movies                        yes
+WriteMoviesEvery              100
+
+Component 0 Moleculename             fake_solvent
+            IdealGasRosenbluthWeight 1.0
+            ExtraFrameworkMolecule   no
+            FugacityCoefficient      1.0
+            RotationProbability      1.0
+            TranslationProbability   1.0
+            ReinsertionProbability   1.0
+            SwapProbability          1.0
+            CreateNumberOfMolecules  100

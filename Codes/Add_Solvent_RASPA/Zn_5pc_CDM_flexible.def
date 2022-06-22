@@ -1,0 +1,53 @@
+# critical constants: Temperature [T], Pressure [Pa], and Acentric factor [-]
+0.0
+0.0
+0.0
+# Number Of Atoms
+5
+# Number of groups
+1
+# benzene-group
+flexible
+# number of atoms
+5
+# atomic positions
+0 Zn_c  
+1 Zn_s  
+2 Zn_s  
+3 Zn_s  
+4 Zn_s  
+# Chiral centers Bond  BondDipoles Bend  UrayBradley InvBend  Torsion Imp. Torsion Bond/Bond Stretch/Bend Bend/Bend Bend/Torsion IntraVDW IntraCoulomb
+               0   10            0   20            0       0        0            0         0            0         0            0        0            0
+# Bond stretch: atom n1-n2, type, parameters
+0 1     HARMONIC_BOND     543480.534537   0.90
+0 2     HARMONIC_BOND     543480.534537   0.90
+0 3     HARMONIC_BOND     543480.534537   0.90
+0 4     HARMONIC_BOND     543480.534537   0.90
+1 2     HARMONIC_BOND     543480.534537   1.47
+1 3     HARMONIC_BOND     543480.534537   1.47
+1 4     HARMONIC_BOND     543480.534537   1.47
+2 3     HARMONIC_BOND     543480.534537   1.47
+2 4     HARMONIC_BOND     543480.534537   1.47
+3 4     HARMONIC_BOND     543480.534537   1.47
+1 0 2   HARMONIC_BEND      55354.498888   109.5 
+1 0 3   HARMONIC_BEND      55354.498888   109.5
+1 0 4   HARMONIC_BEND      55354.498888   109.5
+2 0 3   HARMONIC_BEND      55354.498888   109.5
+2 0 4   HARMONIC_BEND      55354.498888   109.5
+3 0 4   HARMONIC_BEND      55354.498888   109.5
+1 2 3   HARMONIC_BEND      55354.498888    60.0
+1 2 4   HARMONIC_BEND      55354.498888    60.0
+1 3 4   HARMONIC_BEND      55354.498888    60.0
+2 3 4   HARMONIC_BEND      55354.498888    60.0
+1 2 0   HARMONIC_BEND      55354.498888    35.25
+1 3 0   HARMONIC_BEND      55354.498888    35.25
+1 4 0   HARMONIC_BEND      55354.498888    35.25
+2 1 0   HARMONIC_BEND      55354.498888    35.25
+3 1 0   HARMONIC_BEND      55354.498888    35.25
+4 1 0   HARMONIC_BEND      55354.498888    35.25
+2 3 0   HARMONIC_BEND      55354.498888    35.25
+3 2 0   HARMONIC_BEND      55354.498888    35.25
+3 4 0   HARMONIC_BEND      55354.498888    35.25
+4 3 0   HARMONIC_BEND      55354.498888    35.25
+# Number of config moves  
+0
