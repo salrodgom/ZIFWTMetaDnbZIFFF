@@ -1,17 +1,29 @@
 # vim:ft=plumed
-RESTART
-Zn_atoms: GROUP NDX_FILE=index.ndx NDX_GROUP=Zn
-N_atoms: GROUP NDX_FILE=index.ndx  NDX_GROUP=N1
-# ........................................
-# First agregation:
 ene: ENERGY
 vol: VOLUME
-ent: MATHEVAL ARG=ene,vol FUNC=x+0.06022140857*y PERIODIC=NO
-# Nucleation:
-cn: COORDINATIONNUMBER SPECIESA=Zn_atoms SPECIESB=N_atoms R_0=0.30 MEAN
-# Crystalline growth:
+Zn_atoms: GROUP NDX_FILE=index.ndx  NDX_GROUP=Zn
+N_atoms:  GROUP NDX_FILE=index.ndx  NDX_GROUP=N1
+#
+# f(x)=exp(- (x-D_0)**2/(2*R_0**2)) ; D_0=2.2 ; R_0=0.1
+cn: COORDINATIONNUMBER SPECIESA=Zn_atoms SPECIESB=N_atoms SWITCH={GAUSSIAN R_0=0.01 D_0=0.325 D_MAX=0.35} MEAN LOWMEM
+#
+# Evaporation small clusters
+#lq: COORDINATIONNUMBER SPECIES=Zn_atoms  SWITCH={GAUSSIAN R_0=0.02 D_0=0.72 D_MAX=0.74 } MEAN LOWMEM
+#cm: CONTACT_MATRIX ATOMS=lq SWITCH={GAUSSIAN R_0=0.01 D_0=0.65 D_MAX=0.725 }
+#dfs: DFSCLUSTERING MATRIX=cm LOWMEM
+#clust1: CLUSTER_PROPERTIES CLUSTERS=dfs CLUSTER=1 SUM
+#cv_bigclus: MATHEVAL ARG=clust1.sum  FUNC=x/(4*96) PERIODIC=NO
+#
+es_Q_ZnZn: ENVIRONMENTSIMILARITY ...
+ SPECIES=Zn_atoms
+ SIGMA=0.5
+ CRYSTAL_STRUCTURE=CUSTOM
+ REFERENCE=env_00.pdb # Degeneracy of the environment is 96
+ MEAN
+ MORE_THAN={RATIONAL R_0=8 NN=24 MM=48}
+...
 # Long-Scale Ordering
-es_ZnZn_sod: ENVIRONMENTSIMILARITY ...
+es_sod_ZnZn: ENVIRONMENTSIMILARITY ...
  SPECIES=Zn_atoms
  SIGMA=0.1
  CRYSTAL_STRUCTURE=CUSTOM
@@ -24,54 +36,32 @@ es_ZnZn_sod: ENVIRONMENTSIMILARITY ...
  # Sum degenerancies 16*6 == 96 atoms of Zn
  MEAN MORE_THAN={RATIONAL R_0=0.7 NN=24 MM=48}
 ...
-es_ZnZn_Q: ENVIRONMENTSIMILARITY ...
- SPECIES=Zn_atoms
- SIGMA=0.1
- CRYSTAL_STRUCTURE=CUSTOM
- REFERENCE_1=env_1.pdb # Degeneracy of the environment is 16
- REFERENCE_2=env_2.pdb # Degeneracy of the environment is 16
- REFERENCE_3=env_3.pdb # Degeneracy of the environment is 16
- REFERENCE_4=env_4.pdb # Degeneracy of the environment is 16
- REFERENCE_5=env_5.pdb # Degeneracy of the environment is 16
- REFERENCE_6=env_6.pdb # Degeneracy of the environment is 16
- # Sum degenerancies 16*6 == 96 atoms of Zn
- MEAN MORE_THAN={RATIONAL R_0=0.7 NN=24 MM=48}
-...
-# Short-Scale Order
-q6:  Q6 SPECIES=Zn_atoms  SWITCH={GAUSSIAN R_0=0.02 D_0=0.72 D_MAX=0.74 } LOWMEM VMEAN
-lq6: LOCAL_Q6 SPECIES=q6  SWITCH={GAUSSIAN R_0=0.02 D_0=0.72 D_MAX=0.74 } LOWMEM MORE_THAN={RATIONAL R_0=0.8 NN=24 MM=48}
+# Steinhardts:
+q6_ZnZn:  Q6 SPECIES=Zn_atoms SWITCH={GAUSSIAN R_0=0.02 D_0=0.72 D_MAX=0.74 } LOWMEM VMEAN
+lq6_ZnZn: LOCAL_Q6 SPECIES=q6_ZnZn SWITCH={GAUSSIAN R_0=0.02 D_0=0.72 D_MAX=0.74 } LOWMEM MEAN MORE_THAN={RATIONAL R_0=0.8 NN=24 MM=48}
+#
 # Collective Variables:
-cv_1:  MATHEVAL ARG=es_ZnZn.morethan FUNC=x/96.0 PERIODIC=NO
-cv_2:  MATHEVAL ARG=lq6.morethan FUNC=x/96.0 PERIODIC=NO
-cv_3:  MATHEVAL ARG=cn.mean FUNC=x/4.0/1.1 PERIODIC=NO
-#
-# Construct bias potential with OPS
-ecv: ECV_MULTITHERMAL_MULTIBARIC ...
-   ARG=ene,vol 
-   TEMP=450.0                #
-   MIN_TEMP=300              #
-   MAX_TEMP=500.0            #
-   PRESSURE=0.06022140857    #  1 bar
-   MIN_PRESSURE=0.0          #  0 bar
-   MAX_PRESSURE=0.6022140857 # 10 bar
+cv_1: MATHEVAL ARG=cn.mean FUNC=x/4.0 PERIODIC=NO
+cv_2: MATHEVAL ARG=es_Q_ZnZn.morethan FUNC=x/96.0 PERIODIC=NO
+cv_3: MATHEVAL ARG=es_sod_ZnZn.morethan FUNC=x/96.0 PERIODIC=NO
+cv_4: MATHEVAL ARG=lq6_ZnZn.morethan FUNC=x/96.0 PERIODIC=NO
+# Metadynamic:
+meta: METAD ...
+ ARG=cv_1,cv_3,cv_4
+ PACE=200 HEIGHT=0.5 SIGMA=0.02 FILE=HILLS ADAPTIVE=GEOM
+ SIGMA_MIN=0.005,0.005,0.005 SIGMA_MAX=0.1,0.1,0.1
+ GRID_MIN=0,0,0 GRID_MAX=1.05,1.05,1.05 GRID_BIN=200,200,200 WALKERS_MPI
 ...
-ecv_es: ECV_UMBRELLAS_LINE ARG=es_ZnZn.morethan MIN_CV=0.0 MAX_CV=96.0 SIGMA=1.0 BARRIER=500 TEMP=450
-opes: OPES_EXPANDED ARG=ecv.*,ecv_es.* FILE=DeltaF.data PACE=100 WALKERS_MPI 
-#
-# Avoid other structures
-# https://arxiv.org/pdf/1904.05624.pdf
 #             q6.vmean
 # crystal_q6: 0.54166, crystal_es: 0.839854
 # liquid:     0                  0
 # CRN:        0.0453738          0.550492
-diff:  MATHEVAL ARG=q6.vmean,cv_1 FUNC=(x-0.1)/(0.54166-0.1)-y PERIODIC=NO
-uwall: UPPER_WALLS ARG=cv_1,cv_2,cv_3,diff AT=1,1,1,0.5 KAPPA=1,1,1,0.1 EXP=2,2,2,1
-lwall: LOWER_WALLS ARG=cv_1,cv_2,cv_3 AT=0,0,0 KAPPA=1,1,1 EXP=2,2,2
+s_c:  MATHEVAL ARG=q6_ZnZn.vmean,es_sod_ZnZn.mean FUNC=(x-0.1)/(0.54166-0.1)-y PERIODIC=NO
+uwall: UPPER_WALLS ARG=cv_1,cv_2,cv_3,cv_4,s_c AT=1,1,1,1,0.2  KAPPA=1,1,1,1,1 EXP=2,2,2,2,2
+lwall: LOWER_WALLS ARG=cv_1,cv_2,cv_3,cv_4,s_c AT=0,0,0,0,-0.2 KAPPA=1,1,1,1,1 EXP=2,2,2,2,2
 bias:  COMBINE ARG=*.bias PERIODIC=NO
 # Print:
 PRINT STRIDE=100 ARG=* FILE=COLVAR_all
-PRINT STRIDE=100 ARG=cv_1,cv_2,cv_3,ene,vol,ent,bias FILE=COLVAR_cvs
+PRINT STRIDE=100 ARG=cv_1,cv_2,cv_3,cv_4,ene,vol,bias FILE=COLVAR_cvs
 FLUSH STRIDE=100
 ENDPLUMED
-to print the running FES with GNUPLOT:
-p '<awk ''END{for(i=3;i<=NF;i++)print -2.5+(i-3)*5/(NF-3),$i}'' DeltaFs.0.data'w lp
