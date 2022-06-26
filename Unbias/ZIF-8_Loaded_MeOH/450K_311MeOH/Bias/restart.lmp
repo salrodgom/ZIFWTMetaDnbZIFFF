@@ -1,0 +1,46 @@
+# created by cif2lammps
+units      metal
+boundary   p p p
+dimension  3
+newton     on
+atom_style full
+#
+variable dt         equal 0.0005
+variable TK         equal 450.000 # Solvothermal
+variable Pbar       equal 1.0
+variable tdamp      equal 100*${dt}
+variable pdamp      equal 1000*${dt}
+variable RandomSeed world 456781119 056427956 87025515 76239756 798436056 463785632
+variable nprint     equal 100
+variable ndump      equal ${nprint}
+variable pid        world 0 1 2 3 4 5
+#
+read_restart        init.${pid}.restart      
+include             forcefield.lmp
+# Setup neighbor style
+neighbor 2.0 bin
+neigh_modify once no every 1 delay 0 check yes
+# Groups:
+ndx2group index.ndx
+fix SHAKE all shake 0.0001 20 0 b 1 2 a 1 t 1 2 3
+#
+thermo_style  custom step time pe ke temp vol press cella cellb cellc cellalpha cellbeta cellgamma 
+thermo_modify flush yes
+thermo   ${nprint}
+# NPT Sampling
+timer    timeout  119:30:00 every 1000   # 4 days, 23 hours, 30 min
+timestep ${dt}
+dump TRAJ all xtc ${ndump} MDNPT.${pid}.xtc
+dump_modify  TRAJ precision 10000 sfactor 0.1 append yes
+fix 1 all plumed plumedfile plumed.txt outfile plumed.log
+fix 2 all npt temp ${TK} ${TK} ${tdamp} iso ${Pbar} ${Pbar} ${pdamp} mtk yes
+fix 4 all recenter INIT INIT INIT
+run 500000000 upto # 250 ns
+unfix 4
+unfix 2
+unfix 1
+undump TRAJ
+unfix SHAKE
+#
+write_data     last.${pid}.data
+write_restart  last.${pid}.restart

@@ -1,0 +1,118 @@
+# Bond Coeffs
+bond_style   harmonic
+bond_coeff   1   12.5592232       1.42999995      # harmonic    # C8  O3  
+bond_coeff   2   7.66882277      0.944999993      # harmonic    # O3  H5  
+bond_coeff   3   23.4144001      0.899999976      # harmonic    # Zn  He  
+bond_coeff   4   23.4144001       1.47000003      # harmonic    # He  He  
+bond_coeff   5   13.9519463       1.10200000      # harmonic    # H3  C3  
+bond_coeff   6   17.4445953       1.37699997      # harmonic    # C2  C2  
+bond_coeff   7   16.0323601       1.08800006      # harmonic    # C2  H2  
+bond_coeff   8   12.5592232       1.38600004      # harmonic    # C2  N1  
+bond_coeff   9   14.6235933       1.35500002      # harmonic    # N1  C1  
+bond_coeff  10   23.4144001      0.500000000      # harmonic    # N1  Ne  
+bond_coeff  11   9.78331661       1.49800003      # harmonic    # C1  C3  
+  
+# Angle Coeffs
+angle_style   charmm
+angle_coeff   1   2.3867509    108.5000000      0.0000000      0.0000000  # charmm      # C8  O3  H5  
+angle_coeff   2   2.3848000    109.5000000      0.0000000      0.0000000  # charmm      # He  Zn  He  
+angle_coeff   3   2.3848000     35.2500000      0.0000000      0.0000000  # charmm      # Zn  He  He  
+angle_coeff   4   2.3848000     60.0000000      0.0000000      0.0000000  # charmm      # He  He  He  
+angle_coeff   5   1.5175999    130.0339966      0.6408608      2.2360001  # charmm      # C2  C2  H2  
+angle_coeff   6   1.4560288    107.9950027      4.2948079      2.2349999  # charmm      # C2  C2  N1  
+angle_coeff   7   1.3693087    121.3170013      0.8858448      2.1600001  # charmm      # H2  C2  N1  
+angle_coeff   8   2.0088689    106.2519989      4.8411441      2.1930001  # charmm      # C2  N1  C1  
+angle_coeff   9   0.4925696    126.9499969      0.0000000      0.0000000  # charmm      # C2  N1  Ne  
+angle_coeff  10   0.6256848    126.8499985      0.0000000      0.0000000  # charmm      # C1  N1  Ne  
+angle_coeff  11   1.4022623    111.1689987      4.6555634      2.2360001  # charmm      # N1  C1  N1  
+angle_coeff  12   1.6940751    124.1969986      1.3272495      2.5220001  # charmm      # N1  C1  C3  
+angle_coeff  13   1.1785247    107.7409973      0.8095312      1.7790000  # charmm      # H3  C3  H3  
+angle_coeff  14   1.5744016    110.9629974      0.8307776      2.1530001  # charmm      # H3  C3  C1  
+  
+# Dihedral Coeffs
+dihedral_style   hybrid charmm
+dihedral_coeff   1   none                                     # Zn  He  He  He  
+dihedral_coeff   2   none                                     # He  Zn  He  He  
+dihedral_coeff   3   none                                     # He  He  He  He  
+dihedral_coeff   4   charmm  0.0117072   2 180      0.00      # H3  C3  C1  N1  
+dihedral_coeff   5   charmm  0.2879104   2 180      0.00      # C2  C2  N1  C1  
+dihedral_coeff   6   charmm  0.0613978   2 180      0.00      # C2  C2  N1  Ne  
+dihedral_coeff   7   charmm  0.4669872   2 180      0.00      # C2  N1  C1  N1  
+dihedral_coeff   8   charmm  0.1578304   2 180      0.00      # C2  N1  C1  C3  
+dihedral_coeff   9   charmm  0.0147424   2 180      0.00      # H2  C2  C2  H2  
+dihedral_coeff  10   charmm  0.1539280   2 180      0.00      # H2  C2  C2  N1  
+dihedral_coeff  11   charmm  0.1582640   2 180      0.00      # H2  C2  N1  C1  
+dihedral_coeff  12   charmm  0.0457882   2 180      0.00      # H2  C2  N1  Ne  
+dihedral_coeff  13   charmm  0.6647088   2 180      0.00      # N1  C2  C2  N1  
+dihedral_coeff  14   charmm  0.0266230   2 180      0.00      # N1  C1  N1  Ne  
+dihedral_coeff  15   charmm  0.0098427   2 180      0.00      # C3  C1  N1  Ne  
+  
+# Improper Coeffs
+improper_style   hybrid cvff 
+improper_coeff   1   none                   # Zn  He  He  He  
+improper_coeff   2   none                   # He  Zn  He  He  
+improper_coeff   3   none                   # He  He  He  He  
+improper_coeff   4   none                   # C2  C2  H2  N1  
+improper_coeff   5   cvff 0.0024282  -1   2 # N1  C2  C1  Ne  
+improper_coeff   6   cvff 0.1517600  -1   2 # C1  N1  N1  C3  
+improper_coeff   7   none                   # C3  H3  H3  H3  
+improper_coeff   8   none                   # C3  H3  H3  C1 
+
+# Pair Coeffs
+pair_style       hybrid/overlay lj/cut 13.0 coul/long 13.0 morse 13.0
+kspace_style     ewald 1e-8
+pair_modify      table 0
+# 
+pair_coeff  *  *    coul/long
+pair_coeff  4  9    morse    0.0401012653 2.0 2.735   # Zn N1
+pair_coeff  2  4    lj/cut   0.0060146153 2.80777658  # O3 Zn
+pair_coeff  5  *    lj/cut   0.0000001000 1.00000000  # He * (soft-sphere)
+pair_coeff  12 *    lj/cut   0.0000001000 1.00000000  # Ne * (soft-sphere)
+pair_coeff  3  *    lj/cut   0.0000010000 1.00000000  # H5 (methanol)
+# N atom-types: 12
+pair_coeff  1  1    lj/cut   0.0084440985 3.75000000  # C8 C8
+pair_coeff  1  2    lj/cut   0.0082258738 3.38500000  # C8 O3
+pair_coeff  1  4    lj/cut   0.0021399065 2.85500000  # C8 Zn
+pair_coeff  1  6    lj/cut   0.0023983536 3.11050000  # C8 H3
+pair_coeff  1  7    lj/cut   0.0056127711 3.57500005  # C8 C2
+pair_coeff  1  8    lj/cut   0.0023442269 3.13000000  # C8 H2
+pair_coeff  1  9    lj/cut   0.0078917805 3.50000000  # C8 N1
+pair_coeff  1  10   lj/cut   0.0056127711 3.57500005  # C8 C1
+pair_coeff  1  11   lj/cut   0.0056127711 3.57500005  # C8 C3
+pair_coeff  2  2    lj/cut   0.0080132952 3.02000000  # O3 O3
+pair_coeff  2  6    lj/cut   0.0023363646 2.74550000  # O3 H3
+pair_coeff  2  7    lj/cut   0.0054677234 3.21000005  # O3 C2
+pair_coeff  2  8    lj/cut   0.0022836374 2.76500000  # O3 H2
+pair_coeff  2  9    lj/cut   0.0076878345 3.13500000  # O3 N1
+pair_coeff  2  10   lj/cut   0.0054677234 3.21000005  # O3 C1
+pair_coeff  2  11   lj/cut   0.0054677234 3.21000005  # O3 C3
+pair_coeff  4  4    lj/cut   0.0005422176 1.96000000  # Zn Zn
+pair_coeff  4  6    lj/cut   0.0006077005 2.21550000  # Zn H3
+pair_coeff  4  7    lj/cut   0.0014222868 2.68000005  # Zn C2
+pair_coeff  4  8    lj/cut   0.0005939696 2.23500000  # Zn H2
+pair_coeff  4  10   lj/cut   0.0014222868 2.68000005  # Zn C1
+pair_coeff  4  11   lj/cut   0.0014222868 2.68000005  # Zn C3
+pair_coeff  6  6    lj/cut   0.0006811754 2.47100000  # H3 H3
+pair_coeff  6  7    lj/cut   0.0015941455 2.93550005  # H3 C2
+pair_coeff  6  8    lj/cut   0.0006658077 2.49050000  # H3 H2
+pair_coeff  6  9    lj/cut   0.0022414281 2.86050000  # H3 N1
+pair_coeff  6  10   lj/cut   0.0015941455 2.93550005  # H3 C1
+pair_coeff  6  11   lj/cut   0.0015941455 2.93550005  # H3 C3
+pair_coeff  7  7    lj/cut   0.0037307908 3.40000010  # C2 C2
+pair_coeff  7  8    lj/cut   0.0015581720 2.95500005  # C2 H2
+pair_coeff  7  9    lj/cut   0.0052456458 3.32500005  # C2 N1
+pair_coeff  7  10   lj/cut   0.0037307908 3.40000010  # C2 C1
+pair_coeff  7  11   lj/cut   0.0037307908 3.40000010  # C2 C3
+pair_coeff  8  8    lj/cut   0.0006507687 2.51000000  # H2 H2
+pair_coeff  8  9    lj/cut   0.0021908445 2.88000000  # H2 N1
+pair_coeff  8  10   lj/cut   0.0015581399 2.95500005  # H2 C1
+pair_coeff  8  11   lj/cut   0.0015581399 2.95500005  # H2 C3
+pair_coeff  9  9    lj/cut   0.0073755948 3.25000000  # N1 N1
+pair_coeff  9  10   lj/cut   0.0052456458 3.32500005  # N1 C1
+pair_coeff  9  11   lj/cut   0.0052456458 3.32500005  # N1 C3
+pair_coeff  10  10  lj/cut   0.0037307908 3.40000010  # C1 C1
+pair_coeff  10  11  lj/cut   0.0037307908 3.40000010  # C1 C3
+pair_coeff  11  11  lj/cut   0.0037307908 3.40000010  # C3 C3
+
+# scaling 1-4 bonds
+special_bonds   lj 0.0 0.0 0.5 coul 0.0 0.0 0.6874

@@ -1,0 +1,153 @@
+PLUMED: PLUMED is starting
+PLUMED: Version: 2.8.0-dev (git: 73b782c) compiled on May 25 2021 at 10:30:09
+PLUMED: Please cite these papers when using PLUMED [1][2]
+PLUMED: For further information see the PLUMED web page at http://www.plumed.org
+PLUMED: Root: /home/semino/scratch/apps/plumed-dev/build/plumed2/lib/plumed
+PLUMED: For installed feature, see /home/semino/scratch/apps/plumed-dev/build/plumed2/lib/plumed/src/config/config.txt
+PLUMED: Molecular dynamics engine: LAMMPS
+PLUMED: Precision of reals: 8
+PLUMED: Running over 1 node
+PLUMED: Number of threads: 28
+PLUMED: Cache line size: 512
+PLUMED: Number of atoms: 3909
+PLUMED: File suffix: 
+PLUMED: FILE: plumed_start.txt
+PLUMED: Action GROUP
+PLUMED:   with label Zn_atoms
+PLUMED:   importing group 'Zn' from index file index.ndx
+PLUMED:   list of atoms:
+PLUMED:  934 935 936 937 938 939 940 941 942 943 944 945 946 947 948 949 950 951 952 953 954 955 956 957 958
+PLUMED:  959 960 961 962 963 964 965 966 967 968 969 970 971 972 973 974 975 976 977 978 979 980 981 982 983
+PLUMED:  984 985 986 987 988 989 990 991 992 993 994 995 996 997 998 999 1000 1001 1002 1003 1004 1005 1006 1007 1008
+PLUMED:  1009 1010 1011 1012 1013 1014 1015 1016 1017 1018 1019 1020 1021 1022 1023 1024 1025 1026 1027 1028 1029
+PLUMED: Action GROUP
+PLUMED:   with label N_atoms
+PLUMED:   importing group 'N1' from index file index.ndx
+PLUMED:   list of atoms:
+PLUMED:  2758 2759 2760 2761 2762 2763 2764 2765 2766 2767 2768 2769 2770 2771 2772 2773 2774 2775 2776 2777 2778 2779 2780 2781 2782
+PLUMED:  2783 2784 2785 2786 2787 2788 2789 2790 2791 2792 2793 2794 2795 2796 2797 2798 2799 2800 2801 2802 2803 2804 2805 2806 2807
+PLUMED:  2808 2809 2810 2811 2812 2813 2814 2815 2816 2817 2818 2819 2820 2821 2822 2823 2824 2825 2826 2827 2828 2829 2830 2831 2832
+PLUMED:  2833 2834 2835 2836 2837 2838 2839 2840 2841 2842 2843 2844 2845 2846 2847 2848 2849 2850 2851 2852 2853 2854 2855 2856 2857
+PLUMED:  2858 2859 2860 2861 2862 2863 2864 2865 2866 2867 2868 2869 2870 2871 2872 2873 2874 2875 2876 2877 2878 2879 2880 2881 2882
+PLUMED:  2883 2884 2885 2886 2887 2888 2889 2890 2891 2892 2893 2894 2895 2896 2897 2898 2899 2900 2901 2902 2903 2904 2905 2906 2907
+PLUMED:  2908 2909 2910 2911 2912 2913 2914 2915 2916 2917 2918 2919 2920 2921 2922 2923 2924 2925 2926 2927 2928 2929 2930 2931 2932
+PLUMED:  2933 2934 2935 2936 2937 2938 2939 2940 2941 2942 2943 2944 2945 2946 2947 2948 2949 2950 2951 2952 2953 2954 2955 2956 2957
+PLUMED:  2958 2959 2960 2961 2962 2963 2964 2965 2966 2967 2968 2969 2970 2971 2972 2973 2974 2975 2976 2977 2978 2979 2980 2981 2982
+PLUMED:  2983 2984 2985 2986 2987 2988 2989 2990 2991 2992 2993 2994 2995 2996 2997 2998 2999 3000 3001 3002 3003 3004 3005 3006 3007
+PLUMED:  3008 3009 3010 3011 3012 3013 3014 3015 3016 3017 3018 3019 3020 3021 3022 3023 3024 3025 3026 3027 3028 3029 3030 3031 3032
+PLUMED:  3033 3034 3035 3036 3037 3038 3039 3040 3041 3042 3043 3044 3045 3046 3047 3048 3049 3050 3051 3052 3053 3054 3055 3056 3057
+PLUMED:  3058 3059 3060 3061 3062 3063 3064 3065 3066 3067 3068 3069 3070 3071 3072 3073 3074 3075 3076 3077 3078 3079 3080 3081 3082
+PLUMED:  3083 3084 3085 3086 3087 3088 3089 3090 3091 3092 3093 3094 3095 3096 3097 3098 3099 3100 3101 3102 3103 3104 3105 3106 3107
+PLUMED:  3108 3109 3110 3111 3112 3113 3114 3115 3116 3117 3118 3119 3120 3121 3122 3123 3124 3125 3126 3127 3128 3129 3130 3131 3132
+PLUMED:  3133 3134 3135 3136 3137 3138 3139 3140 3141
+PLUMED: Action ENERGY
+PLUMED:   with label ene
+PLUMED:   Bibliography [3][4]
+PLUMED: Action VOLUME
+PLUMED:   with label vol
+PLUMED: Action MATHEVAL
+PLUMED:   with label ent
+PLUMED:   with arguments ene vol
+PLUMED:   with function : x+0.06022140857*y
+PLUMED:   with variables : x y
+PLUMED:   function as parsed by lepton: (x)+(0.0602214*(y))
+PLUMED:   derivatives as computed by lepton:
+PLUMED:     1+(0)
+PLUMED:     0.0602214+(0)
+PLUMED: Action COORDINATIONNUMBER
+PLUMED:   with label cn
+PLUMED:   coordination of central atom and those within 0.3.  Using rational switching function with parameters d0=0 nn=6 mm=12
+PLUMED:   keyword SPECIESA takes atoms : 934 935 936 937 938 939 940 941 942 943 944 945 946 947 948 949 950 951 952 953 954 955 956 957 958 959 960 961 962 963 964 965 966 967 968 969 970 971 972 973 974 975 976 977 978 979 980 981 982 983 984 985 986 987 988 989 990 991 992 993 994 995 996 997 998 999 1000 1001 1002 1003 1004 1005 1006 1007 1008 1009 1010 1011 1012 1013 1014 1015 1016 1017 1018 1019 1020 1021 1022 1023 1024 1025 1026 1027 1028 1029 
+PLUMED:   keyword SPECIESB takes atoms : 2758 2759 2760 2761 2762 2763 2764 2765 2766 2767 2768 2769 2770 2771 2772 2773 2774 2775 2776 2777 2778 2779 2780 2781 2782 2783 2784 2785 2786 2787 2788 2789 2790 2791 2792 2793 2794 2795 2796 2797 2798 2799 2800 2801 2802 2803 2804 2805 2806 2807 2808 2809 2810 2811 2812 2813 2814 2815 2816 2817 2818 2819 2820 2821 2822 2823 2824 2825 2826 2827 2828 2829 2830 2831 2832 2833 2834 2835 2836 2837 2838 2839 2840 2841 2842 2843 2844 2845 2846 2847 2848 2849 2850 2851 2852 2853 2854 2855 2856 2857 2858 2859 2860 2861 2862 2863 2864 2865 2866 2867 2868 2869 2870 2871 2872 2873 2874 2875 2876 2877 2878 2879 2880 2881 2882 2883 2884 2885 2886 2887 2888 2889 2890 2891 2892 2893 2894 2895 2896 2897 2898 2899 2900 2901 2902 2903 2904 2905 2906 2907 2908 2909 2910 2911 2912 2913 2914 2915 2916 2917 2918 2919 2920 2921 2922 2923 2924 2925 2926 2927 2928 2929 2930 2931 2932 2933 2934 2935 2936 2937 2938 2939 2940 2941 2942 2943 2944 2945 2946 2947 2948 2949 2950 2951 2952 2953 2954 2955 2956 2957 2958 2959 2960 2961 2962 2963 2964 2965 2966 2967 2968 2969 2970 2971 2972 2973 2974 2975 2976 2977 2978 2979 2980 2981 2982 2983 2984 2985 2986 2987 2988 2989 2990 2991 2992 2993 2994 2995 2996 2997 2998 2999 3000 3001 3002 3003 3004 3005 3006 3007 3008 3009 3010 3011 3012 3013 3014 3015 3016 3017 3018 3019 3020 3021 3022 3023 3024 3025 3026 3027 3028 3029 3030 3031 3032 3033 3034 3035 3036 3037 3038 3039 3040 3041 3042 3043 3044 3045 3046 3047 3048 3049 3050 3051 3052 3053 3054 3055 3056 3057 3058 3059 3060 3061 3062 3063 3064 3065 3066 3067 3068 3069 3070 3071 3072 3073 3074 3075 3076 3077 3078 3079 3080 3081 3082 3083 3084 3085 3086 3087 3088 3089 3090 3091 3092 3093 3094 3095 3096 3097 3098 3099 3100 3101 3102 3103 3104 3105 3106 3107 3108 3109 3110 3111 3112 3113 3114 3115 3116 3117 3118 3119 3120 3121 3122 3123 3124 3125 3126 3127 3128 3129 3130 3131 3132 3133 3134 3135 3136 3137 3138 3139 3140 3141 
+PLUMED:   added component to this action:  cn.mean 
+PLUMED:   value cn.mean is obtained by taking the 1th component and finding the mean value
+PLUMED: Action ENVIRONMENTSIMILARITY
+PLUMED:   with label es_ZnZn
+PLUMED:   Please read and cite [5]
+PLUMED:   Reference environment 1 : reading 14 reference vectors from env_1.pdb 
+PLUMED:   Reference environment 2 : reading 14 reference vectors from env_2.pdb 
+PLUMED:   Reference environment 3 : reading 14 reference vectors from env_3.pdb 
+PLUMED:   Reference environment 4 : reading 14 reference vectors from env_4.pdb 
+PLUMED:   Reference environment 5 : reading 14 reference vectors from env_5.pdb 
+PLUMED:   Reference environment 6 : reading 14 reference vectors from env_6.pdb 
+PLUMED:   Number of reference environments is 6
+PLUMED:   Number of vectors per reference environment is 14
+PLUMED:   targeting the CUSTOM crystal structure
+PLUMED:   maximum distance in the reference environment is 1.132889
+PLUMED:   representing local density as a sum of Gaussians with standard deviation 0.100000
+PLUMED:   using a soft max function with lambda 100.000000
+PLUMED:   keyword SPECIES takes atoms : 934 935 936 937 938 939 940 941 942 943 944 945 946 947 948 949 950 951 952 953 954 955 956 957 958 959 960 961 962 963 964 965 966 967 968 969 970 971 972 973 974 975 976 977 978 979 980 981 982 983 984 985 986 987 988 989 990 991 992 993 994 995 996 997 998 999 1000 1001 1002 1003 1004 1005 1006 1007 1008 1009 1010 1011 1012 1013 1014 1015 1016 1017 1018 1019 1020 1021 1022 1023 1024 1025 1026 1027 1028 1029 
+PLUMED:   added component to this action:  es_ZnZn.mean 
+PLUMED:   value es_ZnZn.mean is obtained by taking the 1th component and finding the mean value
+PLUMED:   added component to this action:  es_ZnZn.morethan 
+PLUMED:   value es_ZnZn.morethan is obtained by taking the 1th component and finding the number of values more than 0.7.  Using rational switching function with parameters d0=0 nn=24 mm=48
+PLUMED: Action Q6
+PLUMED:   with label q6
+PLUMED:   lowering memory requirements
+PLUMED:   Steinhardt parameter of central atom and those within 0.02.  Using gaussian switching function with parameters d0=0.72
+PLUMED:   Bibliography [6]
+PLUMED:   keyword SPECIES takes atoms : 934 935 936 937 938 939 940 941 942 943 944 945 946 947 948 949 950 951 952 953 954 955 956 957 958 959 960 961 962 963 964 965 966 967 968 969 970 971 972 973 974 975 976 977 978 979 980 981 982 983 984 985 986 987 988 989 990 991 992 993 994 995 996 997 998 999 1000 1001 1002 1003 1004 1005 1006 1007 1008 1009 1010 1011 1012 1013 1014 1015 1016 1017 1018 1019 1020 1021 1022 1023 1024 1025 1026 1027 1028 1029 
+PLUMED:   added component to this action:  q6.vmean 
+PLUMED:   value q6.vmean is obtained by taking the 1th component and finding the norm of the mean vector
+PLUMED: Action LOCAL_Q6
+PLUMED:   with label lq6
+PLUMED:   lowering memory requirements
+PLUMED:   degree of overlap in orientation between central molecule and those within 0.02.  Using gaussian switching function with parameters d0=0.72
+PLUMED:   Bibliography [6]
+PLUMED:   keyword SPECIES takes dynamic groups of atoms constructed from multicolvars labelled : q6 
+PLUMED:   added component to this action:  lq6.morethan 
+PLUMED:   value lq6.morethan is obtained by taking the 1th component and finding the number of values more than 0.8.  Using rational switching function with parameters d0=0 nn=24 mm=48
+PLUMED: Action MATHEVAL
+PLUMED:   with label cv_1
+PLUMED:   with arguments es_ZnZn.morethan
+PLUMED:   with function : x/96.0
+PLUMED:   with variables : x
+PLUMED:   function as parsed by lepton: 0.0104167*(x)
+PLUMED:   derivatives as computed by lepton:
+PLUMED:     0.0104167
+PLUMED: Action MATHEVAL
+PLUMED:   with label cv_2
+PLUMED:   with arguments lq6.morethan
+PLUMED:   with function : x/96.0
+PLUMED:   with variables : x
+PLUMED:   function as parsed by lepton: 0.0104167*(x)
+PLUMED:   derivatives as computed by lepton:
+PLUMED:     0.0104167
+PLUMED: Action MATHEVAL
+PLUMED:   with label cv_3
+PLUMED:   with arguments cn.mean
+PLUMED:   with function : x/4.0/1.1
+PLUMED:   with variables : x
+PLUMED:   function as parsed by lepton: 0.227273*(x)
+PLUMED:   derivatives as computed by lepton:
+PLUMED:     0.227273
+PLUMED: Action PRINT
+PLUMED:   with label @12
+PLUMED:   with stride 100
+PLUMED:   with arguments ene vol ent cn.mean es_ZnZn.mean es_ZnZn.morethan q6.vmean lq6.morethan cv_1 cv_2 cv_3
+PLUMED:   on file COLVAR_all
+PLUMED:   with format  %f
+PLUMED: Action PRINT
+PLUMED:   with label @13
+PLUMED:   with stride 100
+PLUMED:   with arguments cv_1 cv_2 cv_3 ene vol ent
+PLUMED:   on file COLVAR_cvs
+PLUMED:   with format  %f
+PLUMED: Action FLUSH
+PLUMED:   with label @14
+PLUMED:   with stride 100
+PLUMED: Action ENDPLUMED
+PLUMED:   with label @15
+PLUMED: END FILE: plumed_start.txt
+PLUMED: Timestep: 0.000500
+PLUMED: KbT has not been set by the MD engine
+PLUMED: It should be set by hand where needed
+PLUMED: Relevant bibliography:
+PLUMED:   [1] The PLUMED consortium, Nat. Methods 16, 670 (2019)
+PLUMED:   [2] Tribello, Bonomi, Branduardi, Camilloni, and Bussi, Comput. Phys. Commun. 185, 604 (2014)
+PLUMED:   [3] Bartels and Karplus, J. Phys. Chem. B 102, 865 (1998)
+PLUMED:   [4] Bonomi and Parrinello, J. Comp. Chem. 30, 1615 (2009)
+PLUMED:   [5] Piaggi and Parrinello, J. Chem. Phys. 150 (24), 244119 (2019)
+PLUMED:   [6] Tribello, Giberti, Sosso, Salvalaglio and Parrinello, J. Chem. Theory Comput. 13, 1317 (2017)
+PLUMED: Please read and cite where appropriate!
+PLUMED: Finished setup

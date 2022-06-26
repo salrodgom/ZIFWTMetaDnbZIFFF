@@ -1,0 +1,62 @@
+# created by cif2lammps
+units      metal
+boundary   p p p
+dimension  3
+newton     on
+atom_style full
+# Read coordinates, charges and potentials
+read_data  p1.data
+include    forcefield.lmp
+# Setup neighbor style
+neighbor 2.0 bin
+neigh_modify once no every 1 delay 0 check yes
+# Setup output for minimization:
+thermo 1
+thermo_style custom step time pe press pxx pyy pzz pxy pxz pyz cella cellb cellc cellalpha cellbeta cellgamma vol
+thermo_modify norm no flush yes
+# Groups:
+ndx2group  index.ndx
+thermo     1
+minimize   1e-8 1e-8 1000 1000
+write_data optimisation.data
+# Fix rigid bodies (MeOH molecules)
+fix SHAKE all shake 0.0001 20 0 b 1 2 a 1 t 1 2 3
+# Parameters
+variable dt         equal 0.0005
+variable TK         equal 450.000
+variable Pbar       equal 1.0
+variable tdamp      equal 100*${dt}
+variable pdamp      equal 1000*${dt}
+variable RandomSeed equal 9876543210
+variable nprint     equal 100
+variable ndump      equal ${nprint}
+variable pid        equal 0
+#
+velocity      all create ${TK} ${RandomSeed} 
+thermo_style  custom step time pe ke temp vol press cella cellb cellc cellalpha cellbeta cellgamma 
+thermo_modify flush yes
+thermo   ${nprint}
+timestep 0.0001 # Small timestep for equilibration stage
+# very SHORT NVT Equilibration Stage
+fix 2 all nvt temp ${TK} ${TK} ${tdamp} mtk yes
+fix 4 all recenter INIT INIT INIT
+run 200
+unfix 4
+unfix 2
+# NPT Sampling
+timer    timeout  23:30:00 every 1000   # 4 days, 23 hours, 30 min
+timestep ${dt}
+dump TRAJ all xtc ${ndump} MDNPT.${pid}.xtc
+dump_modify  TRAJ precision 10000 sfactor 0.1
+#fix 1 all plumed plumedfile plumed_start.txt outfile plumed.log
+fix 2 all npt temp ${TK} ${TK} ${tdamp} iso ${Pbar} ${Pbar} ${pdamp} mtk yes
+fix 4 all recenter INIT INIT INIT
+run 500000000 upto # 250 ns
+unfix 4
+unfix 2
+#unfix 1
+undump TRAJ
+unfix SHAKE
+#
+write_data     last.${pid}.data
+write_restart  last.${pid}.restart
