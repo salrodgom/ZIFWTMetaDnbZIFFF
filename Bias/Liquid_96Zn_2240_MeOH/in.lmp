@@ -1,0 +1,80 @@
+# created by cif2lammps
+units     metal
+boundary  p p p
+dimension 3
+newton    on
+#
+atom_style       full
+bond_style       harmonic
+angle_style      charmm
+dihedral_style   hybrid charmm
+improper_style   hybrid cvff 
+#
+pair_style    hybrid/overlay lj/cut 13.0 coul/long 13.0 morse 13.0
+kspace_style  ewald 1e-8
+pair_modify   table 0
+#
+read_data p1_fromPDFFile.data
+include   pair.lmp
+# scaling 1-4 bonds
+special_bonds   lj 0.0 0.0 0.5 coul 0.0 0.0 0.6874
+# Setup neighbor style
+neighbor 2.0 bin
+neigh_modify once no every 1 delay 0 check yes
+# Setup output
+thermo 1
+thermo_style custom step pe press pxx pyy pzz pxy pxz pyz cella cellb cellc cellalpha cellbeta cellgamma vol
+thermo_modify norm no flush yes
+# Groups:
+ndx2group index.ndx
+thermo 1
+minimize 1e-2 1e-2 1000 1000
+write_data optimised.data
+# Rigid molecule (solvent)
+#fix SHAKE all shake 0.0001 20 0 b 1 2 a 1 t 1 2 3
+#
+variable dt         equal 0.0005
+variable TK         equal 450.000 # Solvothermal
+variable Pbar       equal 1.0
+variable tdamp      equal 100*${dt}
+variable pdamp      equal 1000*${dt}
+variable RandomSeed equal 123456789
+variable nprint     equal 100
+variable ndump      equal 2*${nprint}
+#
+velocity      all create ${TK} ${RandomSeed} 
+thermo_style  custom step time etotal ke pe evdwl ecoul elong temp press vol
+thermo_modify flush yes
+thermo   ${nprint}
+timestep ${dt}
+reset_timestep 0
+dump         TRAJ all xtc ${ndump} Equilibration.xtc
+dump_modify  TRAJ precision 10000 sfactor 0.1
+fix 2 all npt temp ${TK} ${TK} ${tdamp} iso ${Pbar} ${Pbar} ${pdamp} mtk yes
+run 100
+unfix 2
+undump TRAJ
+# Sampling:
+dump TRAJ all xtc ${ndump} MDNVT.xtc
+dump_modify  TRAJ precision 10000 sfactor 0.1
+fix 1 all plumed plumedfile plumed.txt outfile plumed.log
+fix 2 all npt temp ${TK} ${TK} ${tdamp} iso ${Pbar} ${Pbar} ${pdamp} mtk yes
+fix 4 all recenter INIT INIT INIT
+run 1000000
+unfix 4
+unfix 2
+unfix 1
+undump TRAJ
+#
+# last step:
+fix 2 all nvt temp ${TK} ${TK} ${tdamp}
+fix 4 all recenter INIT INIT NULL
+dump TRAJ all custom 1 last_step.lammpstrj element xs ys zs
+dump_modify TRAJ element S O C Zn He  H  C  H  N  C  C Ne sort id pbc yes
+run 0
+unfix 4
+unfix 2
+undump      TRAJ
+unfix  SHAKE
+write_data last.data
+write_restart restart.MDNVT

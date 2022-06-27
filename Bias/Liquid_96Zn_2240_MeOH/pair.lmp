@@ -1,0 +1,56 @@
+#
+pair_coeff  *  *    coul/long
+pair_coeff  4  9    morse    0.0401012653 2.00000 2.735 # Zn N1
+pair_coeff  2  4    lj/cut   0.0060146153 2.807776579 # 0.0019678839 3.20000     # O3 Zn
+pair_coeff  5  *    lj/cut   0.0000001000 1.00000000  # He * (soft-sphere)
+pair_coeff  12 *    lj/cut   0.0000001000 1.00000000  # Ne * (soft-sphere)
+pair_coeff  3  *    lj/cut   0.0000010000 1.00000000  # H5 (methanol)
+# N atom-types: 12
+pair_coeff  1  1    lj/cut   0.0084440985 3.75000000  # C8 C8
+pair_coeff  1  2    lj/cut   0.0082258738 3.38500000  # C8 O3
+pair_coeff  1  4    lj/cut   0.0021399065 2.85500000  # C8 Zn
+pair_coeff  1  6    lj/cut   0.0023983536 3.11050000  # C8 H3
+pair_coeff  1  7    lj/cut   0.0056127711 3.57500005  # C8 C2
+pair_coeff  1  8    lj/cut   0.0023442269 3.13000000  # C8 H2
+pair_coeff  1  9    lj/cut   0.0078917805 3.50000000  # C8 N1
+pair_coeff  1  10   lj/cut   0.0056127711 3.57500005  # C8 C1
+pair_coeff  1  11   lj/cut   0.0056127711 3.57500005  # C8 C3
+pair_coeff  2  2    lj/cut   0.0080132952 3.02000000  # O3 O3
+pair_coeff  2  6    lj/cut   0.0023363646 2.74550000  # O3 H3
+pair_coeff  2  7    lj/cut   0.0054677234 3.21000005  # O3 C2
+pair_coeff  2  8    lj/cut   0.0022836374 2.76500000  # O3 H2
+pair_coeff  2  9    lj/cut   0.0076878345 3.13500000  # O3 N1
+pair_coeff  2  10   lj/cut   0.0054677234 3.21000005  # O3 C1
+pair_coeff  2  11   lj/cut   0.0054677234 3.21000005  # O3 C3
+pair_coeff  4  4    lj/cut   0.0005422176 1.96000000  # Zn Zn
+pair_coeff  4  6    lj/cut   0.0006077005 2.21550000  # Zn H3
+pair_coeff  4  7    lj/cut   0.0014222868 2.68000005  # Zn C2
+pair_coeff  4  8    lj/cut   0.0005939696 2.23500000  # Zn H2
+pair_coeff  4  10   lj/cut   0.0014222868 2.68000005  # Zn C1
+pair_coeff  4  11   lj/cut   0.0014222868 2.68000005  # Zn C3
+pair_coeff  6  6    lj/cut   0.0006811754 2.47100000  # H3 H3
+pair_coeff  6  7    lj/cut   0.0015941455 2.93550005  # H3 C2
+pair_coeff  6  8    lj/cut   0.0006658077 2.49050000  # H3 H2
+pair_coeff  6  9    lj/cut   0.0022414281 2.86050000  # H3 N1
+pair_coeff  6  10   lj/cut   0.0015941455 2.93550005  # H3 C1
+pair_coeff  6  11   lj/cut   0.0015941455 2.93550005  # H3 C3
+pair_coeff  7  7    lj/cut   0.0037307908 3.40000010  # C2 C2
+pair_coeff  7  8    lj/cut   0.0015581720 2.95500005  # C2 H2
+pair_coeff  7  9    lj/cut   0.0052456458 3.32500005  # C2 N1
+pair_coeff  7  10   lj/cut   0.0037307908 3.40000010  # C2 C1
+pair_coeff  7  11   lj/cut   0.0037307908 3.40000010  # C2 C3
+pair_coeff  8  8    lj/cut   0.0006507687 2.51000000  # H2 H2
+pair_coeff  8  9    lj/cut   0.0021908445 2.88000000  # H2 N1
+pair_coeff  8  10   lj/cut   0.0015581399 2.95500005  # H2 C1
+pair_coeff  8  11   lj/cut   0.0015581399 2.95500005  # H2 C3
+pair_coeff  9  9    lj/cut   0.0073755948 3.25000000  # N1 N1
+pair_coeff  9  10   lj/cut   0.0052456458 3.32500005  # N1 C1
+pair_coeff  9  11   lj/cut   0.0052456458 3.32500005  # N1 C3
+pair_coeff  10  10  lj/cut   0.0037307908 3.40000010  # C1 C1
+pair_coeff  10  11  lj/cut   0.0037307908 3.40000010  # C1 C3
+pair_coeff  11  11  lj/cut   0.0037307908 3.40000010  # C3 C3
+#
+kspace_style  ewald 1e-6
+pair_modify   table 0
+# scaling 1-4 bonds
+special_bonds   lj 0.0 0.0 0.5 coul 0.0 0.0 0.6874
