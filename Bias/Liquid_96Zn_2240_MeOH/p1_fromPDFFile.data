@@ -34,7 +34,7 @@ Masses
 Bond Coeffs
   
    1   12.5592232       1.42999995      # harmonic    # C8  O3  
-   2   7.66882277      0.944999993      # harmonic    # O3  H5  
+   2   8.66882277      0.944999993      # harmonic    # O3  H5  
    3   23.4144001      0.899999976      # harmonic    # Zn  He  
    4   23.4144001       1.47000003      # harmonic    # He  He  
    5   13.9519463       1.10200000      # harmonic    # H3  C3  
@@ -67,18 +67,18 @@ Dihedral Coeffs
    1   none # Zn  He  He  He  
    2   none # He  Zn  He  He  
    3   none # He  He  He  He  
-   4   charmm  0.0117072   2 180      0.0000000 # charmm      # H3  C3  C1  N1  
-   5   charmm  0.4669872   2 180      0.0000000 # charmm      # C2  N1  C1  N1  
-   6   charmm  0.1578304   2 180      0.0000000 # charmm      # C2  N1  C1  C3  
-   7   charmm  0.2879104   2 180      0.0000000 # charmm      # C2  C2  N1  C1  
-   8   charmm  0.0613978   2 180      0.0000000 # charmm      # C2  C2  N1  Ne  
-   9   charmm  0.1582640   2 180      0.0000000 # charmm      # H2  C2  N1  C1  
-  10   charmm  0.0457882   2 180      0.0000000 # charmm      # H2  C2  N1  Ne  
-  11   charmm  0.0147424   2 180      0.0000000 # charmm      # H2  C2  C2  H2  
-  12   charmm  0.1539280   2 180      0.0000000 # charmm      # H2  C2  C2  N1  
-  13   charmm  0.6647088   2 180      0.0000000 # charmm      # N1  C2  C2  N1  
-  14   charmm  0.0266230   2 180      0.0000000 # charmm      # N1  C1  N1  Ne  
-  15   charmm  0.0098427   2 180      0.0000000 # charmm      # C3  C1  N1  Ne  
+   4   charmm  0.0117072   2 180      0.0000000 # H3  C3  C1  N1  
+   5   charmm  0.4669872   2 180      0.0000000 # C2  N1  C1  N1  
+   6   charmm  0.1578304   2 180      0.0000000 # C2  N1  C1  C3  
+   7   charmm  0.2879104   2 180      0.0000000 # C2  C2  N1  C1  
+   8   charmm  0.0613978   2 180      0.0000000 # C2  C2  N1  Ne  
+   9   charmm  0.1582640   2 180      0.0000000 # H2  C2  N1  C1  
+  10   charmm  0.0457882   2 180      0.0000000 # H2  C2  N1  Ne  
+  11   charmm  0.0147424   2 180      0.0000000 # H2  C2  C2  H2  
+  12   charmm  0.1539280   2 180      0.0000000 # H2  C2  C2  N1  
+  13   charmm  0.6647088   2 180      0.0000000 # N1  C2  C2  N1  
+  14   charmm  0.0266230   2 180      0.0000000 # N1  C1  N1  Ne  
+  15   charmm  0.0098427   2 180      0.0000000 # C3  C1  N1  Ne  
   
 Improper Coeffs
   
