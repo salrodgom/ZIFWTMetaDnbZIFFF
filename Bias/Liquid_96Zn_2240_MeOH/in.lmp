@@ -34,7 +34,7 @@ thermo 1
 fix SHAKE all shake 0.0001 20 0 b 1 2 a 1 t 1 2 3
 #
 variable dt         equal 0.0005
-variable TK         equal 298.000 # Solvothermal
+variable TK         equal 450.000 # Solvothermal
 variable Pbar       equal 1.0
 variable tdamp      equal 100*${dt}
 variable pdamp      equal 1000*${dt}
