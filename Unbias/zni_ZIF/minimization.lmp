@@ -1,0 +1,30 @@
+variable Gnorm      equal 1e-6
+variable RandomSeed equal 10264048
+# ------------------------ Optimisation Run -------------------------------
+thermo 100
+variable min_eval equal ${Gnorm}
+variable           prev_E     equal 50000.00
+variable           iter       loop 100000
+label              loop_min_1
+ min_style  cg
+ fix        1 all box/relax tri 0.0
+ minimize   0.0 1.0e-10 1000 1000
+ unfix      1
+ min_style  hftn
+ variable   tempstp     equal $(step)
+ variable   CellMinStep equal ${tempstp}
+ minimize   0 1.0e-10 1000 1000
+ variable   AtomMinStep equal ${tempstp}
+ variable   temppe      equal $(pe)
+ variable   min_E       equal abs(${prev_E}-${temppe})
+ print "${iter} ${CellMinStep} ${AtomMinStep} ${AtomMinStep} $(pe) ${min_E}" append Minimisation.txt screen no
+ if "${min_E} < ${min_eval}" then "jump SELF break_min_1"
+ variable    prev_E     equal ${temppe}
+ next        iter
+ jump        SELF loop_min_1
+label       break_min_1
+# Last Opmitimisation:
+min_style hftn
+minimize 0.0 1.0e-10 1000 1000
+variable   min_E       equal abs(${prev_E}-$(pe))
+print ". . . . $(pe) ${min_E}" append Minimisation.txt screen no

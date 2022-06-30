@@ -1,0 +1,48 @@
+pair_coeff  *  *  coul/long
+# N atom-types: 8
+# 1 Zn 0.0005423 1.9600000 
+# 2 C4 0.0037308 3.4000001 
+# 3 N1 0.0073756 3.2500000 
+# 4 C2 0.0037308 3.4000001 
+# 5 H4 0.0006660 2.5000000 
+# 6 H2 0.0006508 2.5100000 
+# 7 He 0.0000000 1.0000000 
+# 8 Ne 0.0000000 1.0000000 
+pair_coeff  *  *  coul/long
+pair_coeff  1  3  morse  0.040101265347783056 2.0 2.735
+pair_coeff  7  *  lj/cut 0.0000001001 1.0000 #0.0000000433 1.0     # He *
+pair_coeff  8  *  lj/cut 0.0000001001 1.0000 #0.0000000433 1.0     # Ne *
+# N atom-types: 8
+pair_coeff  1  1  lj/cut  .0005422176 1.96000000  # Zn Zn
+pair_coeff  1  2  lj/cut  .0014222868 2.680000050  # Zn C4
+pair_coeff  1  4  lj/cut  .0014222868 2.680000050  # Zn C2
+pair_coeff  1  5  lj/cut  .0006009159 2.230000000  # Zn H4
+pair_coeff  1  6  lj/cut  .0005939696 2.235000000  # Zn H2
+pair_coeff  2  2  lj/cut  .0037307908 3.40000010  # C4 C4
+pair_coeff  2  3  lj/cut  .0052456458 3.325000050  # C4 N1
+pair_coeff  2  4  lj/cut  .0037307908 3.400000100  # C4 C2
+pair_coeff  2  5  lj/cut  .0015762931 2.950000050  # C4 H4
+pair_coeff  2  6  lj/cut  .0015581720 2.955000050  # C4 H2
+pair_coeff  3  3  lj/cut  .0073755948 3.25000000  # N1 N1
+pair_coeff  3  4  lj/cut  .0052456458 3.325000050  # N1 C2
+pair_coeff  3  5  lj/cut  .0022163257 2.875000000  # N1 H4
+pair_coeff  3  6  lj/cut  .0021908902 2.880000000  # N1 H2
+pair_coeff  4  4  lj/cut  .0037307908 3.40000010  # C2 C2
+pair_coeff  4  5  lj/cut  .0015762931 2.950000050  # C2 H4
+pair_coeff  4  6  lj/cut  .0015581720 2.955000050  # C2 H2
+pair_coeff  5  5  lj/cut  .0006659579 2.50000000  # H4 H4
+pair_coeff  5  6  lj/cut  .0006583312 2.505000000  # H4 H2
+pair_coeff  6  6  lj/cut  .0006507687 2.51000000  # H2 H2
+
+#
+kspace_style  ewald 1e-8
+pair_modify   tail yes table 0
+# scaling 1-4 bonds
+special_bonds   lj 0.0 0.0 0.5 coul 0.0 0.0 0.6874
+# Setup neighbor style
+neighbor 2.0 bin
+neigh_modify once no every 1 delay 0 check yes
+# Setup output
+thermo 1
+thermo_style custom step pe press pxx pyy pzz pxy pxz pyz cella cellb cellc cellalpha cellbeta cellgamma vol
+thermo_modify norm no flush yes
