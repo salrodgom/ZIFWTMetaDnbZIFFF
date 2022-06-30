@@ -34,40 +34,46 @@ thermo 1
 fix SHAKE all shake 0.0001 20 0 b 1 2 a 1 t 1 2 3
 #
 variable dt         equal 0.0005
-variable TK         equal 450.000 # Solvothermal
+variable TK         equal 400.000 
 variable Pbar       equal 1.0
 variable tdamp      equal 100*${dt}
 variable pdamp      equal 1000*${dt}
-variable RandomSeed equal 123456789
+variable RandomSeed equal 7865724
 variable nprint     equal 100
 variable ndump      equal 2*${nprint}
 #
-velocity      all create ${TK} ${RandomSeed} 
+velocity      all create 100.0 ${RandomSeed} 
 thermo_style  custom step time etotal ke pe evdwl ecoul elong temp press vol
 thermo_modify flush yes
 thermo   ${nprint}
+# very short equilibration with 0.000005 ps timestep
 timestep 0.000005
 reset_timestep 0
 dump         TRAJ all xtc ${ndump} Equilibration.xtc
 dump_modify  TRAJ precision 10000 sfactor 0.1
-fix 2 all npt temp ${TK} ${TK} ${tdamp} iso ${Pbar} ${Pbar} ${pdamp} mtk yes
+fix 2 all npt temp 200.0 300.0 ${tdamp} iso ${Pbar} ${Pbar} ${pdamp} mtk yes
 fix 4 all recenter 0.0 0.0 0.0 units box
 run 1000
 unfix 2
 unfix 4
 undump TRAJ
-# Sampling:
+# very short equilibration with 0.0005 ps timestep
 timestep ${dt}
 fix 2 all nvt temp ${TK} ${TK} ${tdamp} mtk yes
 fix 4 all recenter 0.0 0.0 0.0 units box
 run 1000
 unfix 2
 unfix 4
-#
-dump TRAJ all xtc ${ndump} MDNVT.xtc
+# Production
+dump TRAJ all xtc ${ndump} MDNPT.xtc
 dump_modify  TRAJ precision 10000 sfactor 0.1
 fix 1 all plumed plumedfile plumed.txt outfile plumed.log
-fix 2 all npt temp ${TK} ${TK} ${tdamp} iso ${Pbar} ${Pbar} ${pdamp} mtk yes
+fix 2 all npt temp 300.0 ${TK} ${tdamp} iso ${Pbar} ${Pbar} ${pdamp}
+fix 4 all recenter 0.0 0.0 0.0 units box
+run 10000
+unfix 4
+unfix 2
+fix 2 all npt temp ${TK} ${TK} ${tdamp} iso ${Pbar} ${Pbar} ${pdamp}
 fix 4 all recenter 0.0 0.0 0.0 units box
 run 1000000
 unfix 4
